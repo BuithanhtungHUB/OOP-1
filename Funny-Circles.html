@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny Circles</title>
+</head>
+<body>
+<canvas id="myCanvas" width="800px" height="600px" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+    let canvas = document.getElementById("myCanvas");
+    let pen = canvas.getContext('2d');
+    class circle {
+        constructor(x, y, radius, color) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+        }
+
+        render(canvas) {
+            pen.beginPath();
+            pen.arc(this.x,this.y,this.radius,0,2*Math.PI);
+            pen.strokeStyle = 'yellow';
+            pen.lineWidth = 10;
+            pen.stroke();
+            pen.fillStyle = this.color;
+            pen.fill();
+            pen.closePath();
+
+        }
+    }
+
+    let circle1 = new circle(300,200,100,'red');
+    circle1.render(canvas);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Mobile.js"></script>
+</head>
+<style>
+    .mobile {
+        width: 300px;
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 20px 10px;
+        text-align: center;
+        background-color: lightgray;
+        float: left;
+        margin: 20px;
+    }
+
+    input {
+        width: 200px;
+    }
+
+    #nokia {
+        background-color: #ff0000;
+    }
+</style>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="mobile" id="iphone">
+    <p id="iphone-name">Name</p>
+    <p id="iphone-battery"></p>
+    <textarea id="iphone-inbox" cols="30" rows="10" placeholder="Inbox"></textarea>
+    <textarea id="iphone-outbox" cols="30" rows="10" placeholder="Outbox"></textarea>
+    <input type="text" id="iphone-msg" placeholder="Write message here..." oninput="writeMess(mobile1,this.value)">
+    <button onclick="sendMess(mobile1,mobile2)">Send</button>
+</div>
+<button onclick="switchStatus(mobile2)">Power2</button>
+<div class="mobile" id="nokia">
+    <p id="nokia-name">Name</p>
+    <p id="nokia-battery"></p>
+    <textarea id="nokia-inbox" cols="30" rows="10" placeholder="Inbox"></textarea>
+    <textarea id="nokia-outbox" cols="30" rows="10" placeholder="Outbox"></textarea>
+    <input type="text" id="nokia-msg" placeholder="Write message here..." oninput="writeMess(mobile2,this.value)">
+    <button onclick="sendMess(mobile2,mobile1)">Send</button>
+</div>
+<script>
+    let mobile1 = new Mobile('Iphone 12 Pro Max', 'iphone');
+    let mobile2 = new Mobile('Nokia 1280', 'nokia');
+
+    function display(mobile) {
+        document.getElementById(mobile.id + '-name').innerHTML = mobile.name;
+        document.getElementById(mobile.id + '-inbox').innerHTML = mobile.inbox;
+        document.getElementById(mobile.id + '-outbox').innerHTML = mobile.outbox;
+        document.getElementById(mobile.id + '-battery').innerHTML = mobile.battery;
+
+    }
+
+    function writeMess(mobile, value) {
+        mobile.writeMsg(value);
+    }
+
+    function sendMess(mobile1, mobile2) {
+        mobile1.sendMsg(mobile2);
+        alert(mobile1.name + ' send a message to ' + mobile2.name);
+        clearInput(mobile1);
+        display(mobile1);
+        display(mobile2);
+
+    }
+
+    function clearInput(mobile) {
+        document.getElementById(mobile.id + '-msg').value = '';
+
+    }
+
+    function switchStatus(mobile) {
+        if (document.getElementById(mobile.id).style.display != 'none') {
+            document.getElementById(mobile.id).style.display = 'none';
+        }else {
+            document.getElementById(mobile.id).style.display = 'block';
+        }
+    }
+
+    display(mobile1);
+    display(mobile2);
+</script>
+</body>
+</html>

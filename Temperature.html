@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+</head>
+<body>
+<script>
+    class temperature {
+        constructor(celcius) {
+            this.celcius = celcius;
+        }
+
+        getCelcius(celcius) {
+            return this.celcius;
+        }
+        getFahrenheit(celcius) {
+            return this.celcius * 1.8 + 32;
+        }
+        getKenvin(celcius) {
+            return this.celcius +273.15;
+        }
+    }
+    let temp = new temperature(25);
+    document.write(`Độ C là: ${temp.getCelcius()}°C`);
+    document.write('<br/>');
+    document.write(`Độ F là: ${temp.getFahrenheit()}°F`);
+    document.write('<br/>');
+    document.write(`Độ K là: ${temp.getKenvin()}°K`);
+
+</script>
+
+</body>
+</html>

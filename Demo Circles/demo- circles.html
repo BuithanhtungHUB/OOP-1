@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Circle Canvas</title>
+  <script src="demo-circles.js"></script>
+</head>
+<body>
+<canvas id="myCanvas" width="800px" height="600px" style="border: 1px solid black"></canvas>
+</body>
+
+<script>
+  let canvas = document.getElementById('myCanvas');
+  let pen = canvas.getContext('2d');
+
+  function creatCircle(number) {
+    for (let i = 0; i < number; i++) {
+      let x = randomNumber(0,canvas.width);
+      let y = randomNumber(0,canvas.height);
+      let radius = randomNumber(50,200);
+      let color = randomColor();
+      let circle = new Circle(x,y,radius,color);
+      circle.renderImg();
+    }
+  }
+  function randomNumber(min,max) {
+    return Math.floor(Math.random()*max-min)+min;
+  }
+  function randomColor() {
+    let r = randomNumber(0,255);
+    let g = randomNumber(0,255);
+    let b = randomNumber(0,255);
+    return `rgb(${r},${g},${b})`;
+  }
+
+  creatCircle(20);
+
+
+</script>
+</html>
